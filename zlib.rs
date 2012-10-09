@@ -50,7 +50,7 @@ pub fn compress(src: &[u8], level: Option<int>) -> Result<~[u8], Error> {
 
     match r {
         Ok(destlen) => {
-            unsafe { vec::raw::set_len(dest, destlen); }
+            unsafe { vec::raw::set_len(&mut dest, destlen); }
             Ok(dest)
         }
         Err(e) => Err(e)
@@ -80,7 +80,7 @@ pub fn uncompress(src: &[u8], destlen: uint) -> Result<~[u8], Error> {
 
     match r {
         Ok(destlen) => {
-            unsafe { vec::raw::set_len(dest, destlen); }
+            unsafe { vec::raw::set_len(&mut dest, destlen); }
             Ok(dest)
         }
         Err(e) => Err(e)
